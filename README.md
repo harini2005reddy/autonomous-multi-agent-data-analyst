@@ -1,316 +1,332 @@
-<div align="center">
+# Autonomous Multi-Agent AI Data Analyst & Business Intelligence Platform
 
-# 🤖 DataAgent Pro
+### An Agentic AI System for Reliable, Explainable, and Interactive Data Analytics
 
-### Stateful Multi-Agent Data Analysis with LangGraph
+An AI-powered data analysis platform that enables users to explore CSV datasets using natural language. Built with **LangGraph, FastAPI, Python, and React**, the system combines multi-agent orchestration, deterministic data processing, SQL validation, controlled Python execution, and interactive visualizations to deliver evidence-based business insights.
 
-> **An Agentic AI Data Analysis System for Reliable Analytical Workflows**
+The platform is designed to transform raw data into actionable intelligence through stateful analytical workflows, conversational memory, automated error recovery, and transparent execution reporting.
 
-Analyze CSV datasets using natural language through a **stateful LangGraph workflow** that combines **LLM reasoning**, **deterministic execution**, **safe validation**, and **interactive visualizations**.
-
-Generate grounded analytical insights with validated SQL, Python execution, and persistent conversational memory.
-
-<br>
-
-![Python](https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FASTAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![React](https://img.shields.io/badge/REACT-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TYPESCRIPT-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![LangGraph](https://img.shields.io/badge/LANGGRAPH-000000?style=for-the-badge)
-![AGENTIC AI](https://img.shields.io/badge/AGENTIC_AI-8A2BE2?style=for-the-badge)
-![DuckDB](https://img.shields.io/badge/DUCKDB-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)
-![PostgreSQL](https://img.shields.io/badge/POSTGRESQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-
-<br>
-
-![Plotly](https://img.shields.io/badge/PLOTLY-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-FF6B35?style=for-the-badge)
-![DuckDB](https://img.shields.io/badge/SQL-DUCKDB-FACC15?style=for-the-badge)
-![Docker](https://img.shields.io/badge/DOCKER-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![MIT](https://img.shields.io/badge/LICENSE-MIT-97CA00?style=for-the-badge)
-
-</div>
+**Core capabilities:** Multi-Agent AI · Natural Language Analytics · Validated SQL · Python Execution · Business Intelligence · RAG-Ready Architecture · Observability
 
 ---
 
-# 📸 Product Preview
+## Key Features
 
-The following screenshots demonstrate the complete workflow—from dataset upload and conversational analysis to validated results, interactive visualizations, generated SQL, and execution analytics.
+- **Multi-Agent Orchestration:** A LangGraph supervisor coordinates specialized workers for planning, execution, validation, visualization, and reporting.
+- **Natural Language Data Analysis:** Ask questions about uploaded CSV datasets without manually writing SQL or Python.
+- **Deterministic Computation:** Use DuckDB, Pandas, and NumPy to calculate results from actual data rather than relying on an LLM to invent numerical answers.
+- **SQL Validation:** Validate generated SQL before execution to reduce query errors and restrict unsafe operations.
+- **Controlled Python Execution:** Apply Python AST checks and subprocess timeouts to reduce execution risks.
+- **Conversational Memory:** Maintain analytical context across follow-up questions using LangGraph checkpointing and PostgreSQL.
+- **Automated Error Recovery:** Use validation, reflection, and bounded retries to recover from failed analytical operations.
+- **Interactive Visualizations:** Generate charts and explore analytical results through an interactive frontend.
+- **Explainable Results:** Present generated queries, execution details, results, and supporting insights.
+- **Observability Dashboard:** Track execution latency, success rates, retry behavior, and workflow activity.
+- **MCP Tool Integration:** Expose analytical tools through the Model Context Protocol, with local fallback implementations.
 
+## System Architecture
 
-## 1️⃣ Dataset Upload
-
-Upload a CSV dataset to start a new analysis session. The agent automatically profiles the dataset, identifies its schema, and prepares it for downstream analytical tasks.
-<p align="center">
-  <img src="./screenshots/Dataset Uploading Page.png" width="90%">
-</p>
-
----
-
-## 2️⃣ Main Analysis Workspace
-
-The primary workspace where users ask analytical questions in natural language. The agent plans the workflow, generates SQL or Python when required, validates execution, and presents grounded analytical results in real time.
-<p align="center">
-  <img src="./screenshots/Main Workspace.png" width="90%">
-</p>
-
----
-
-## 3️⃣ Example Analysis — Monthly Sales Trend
-
-A complete analytical report including:
-
-- Executive Summary
-- Query Results
-- Interactive Visualization
-- Statistical Insights
-
-<p align="center">
-  <img src="./screenshots/q1.jpg" width="90%">
-</p>
-
----
-
-## 4️⃣ Conversational Follow-up Analysis
-
-The agent maintains conversation state using LangGraph checkpointing, allowing follow-up questions without re-uploading the dataset.
-
-Example:
-
-> "Show the top 3"
-
-The system automatically understands the previous analytical context.
-
-<p align="center">
-  <img src="./screenshots/q2.png" width="90%">
-</p>
-
----
-
-## 5️⃣ Explainable AI & Debug Information
-
-Every analytical result is fully transparent.
-
-The agent exposes:
-
-- Generated SQL
-- LLM reasoning
-- Execution plan
-- Runtime metadata
-
-allowing users to inspect exactly how every answer was produced.
-
-<p align="center">
-  <img src="./screenshots/Q 4.2.png" width="90%">
-</p>
-
----
-
-## 6️⃣ Analytics & Observability Dashboard
-
-The built-in analytics dashboard tracks system performance, execution latency, retry rates, recovery statistics, and historical execution metrics for monitoring agent behavior.
-
-<p align="center">
-  <img src="./screenshots/Analystics.png" width="90%">
-</p>
-
----
-
-## ⚡ Why This Project is Different
-
-Many AI data analysis tools primarily generate SQL or Python using an LLM and return the result directly. DataAgent Pro combines **LLM reasoning** with **deterministic execution**, **stateful workflows**, and **validation pipelines** to produce more reliable analytical results.
-
-| Capability | Typical AI Data Assistant | DataAgent Pro |
-| :--- | :--- | :--- |
-| **Workflow** | Single-step LLM response | **Stateful LangGraph multi-agent workflow** |
-| **Calculations** | Performed or generated by the LLM | **Executed deterministically using DuckDB, Pandas & NumPy** |
-| **Conversation Memory** | Limited chat history | **Persistent LangGraph checkpoints with PostgreSQL** |
-| **Error Recovery** | Stops on failures | **Validation, reflection, and automatic retries** |
-| **Execution Safety** | Limited validation | **SQL validation and Python AST security checks** |
-| **Explainability** | Final answer only | **Generated SQL, execution plan, reasoning, and reports** |
-| **Observability** | Minimal execution visibility | **Pipeline timeline, execution metrics, and analytics dashboard** |
-| **Tool Integration** | Direct tool calls | **MCP-based tool architecture with fallback support** |
-
----
-
-## 🛠️ Core Engineering Highlights
-
-- **LangGraph Supervisor** – Routes requests to specialized workers for modular execution.
-- **Persistent Memory** – PostgreSQL checkpoints preserve conversation state across sessions.
-- **Safe Code Execution** – SQL validation and Python AST checks improve reliability and security.
-- **MCP Tool Integration** – Analytical capabilities are exposed through Model Context Protocol with automatic fallback to local implementations.
-- **Grounded AI Reports** – The LLM explains deterministic results instead of generating numbers.
-- **Session Isolation** – Each analysis runs in an independent DuckDB session with automatic cleanup.
-
----
-
-## 🏗️ System Architecture
-
-DataAgent Pro follows a **stateful multi-agent architecture** built with **LangGraph**. A central Supervisor coordinates specialized workers for planning, execution, validation, visualization, and reporting, while PostgreSQL preserves workflow state across sessions.
-
-<p align="center">
-  <img src="./screenshots/System Architecture.png" alt="System Architecture" width="90%">
-</p>
-
----
-
-## 🔁 Validation, Reflection & Retry Loop
-
-Every generated SQL or Python script is validated before execution. If validation fails or the results are unreliable, the system automatically reflects on the failure, regenerates the query, and retries execution. After the retry limit is reached, it returns a structured failure report instead of an incorrect response.
-
-<p align="center">
-  <img src="./screenshots/Validation.png" alt="Validation Reflection Retry Loop" width="90%">
-</p>
-
----
-
-
-## 🛡️ Safe Execution
-
-Generated SQL and Python code are validated before execution.
-
-- SQL validation prevents common query errors.
-- Python AST validation blocks unsafe imports and dangerous functions.
-- Code runs inside isolated subprocesses with execution timeouts for safer execution.
-
-## 📊 Observability
-
-The system records execution metrics and workflow traces, allowing users to monitor:
-
-- Execution success rate
-- Retry and recovery statistics
-- Execution timeline
-- System performance metrics
-
-These insights are displayed through an integrated analytics dashboard.
-
----
-
-## 📦 Tech Stack
-
-| Category | Technologies |
-| :--- | :--- |
-| **Frontend** | React, TypeScript, Tailwind CSS, Vite |
-| **Backend** | FastAPI, Python |
-| **AI Framework** | LangGraph, LangChain |
-| **LLMs** | Groq (Llama 3.3 70B), Gemini 2.5 Flash |
-| **Database** | PostgreSQL, DuckDB |
-| **Data Processing** | Pandas, NumPy |
-| **Visualization** | Plotly |
-| **Reporting** | ReportLab |
-| **Tool Integration** | Model Context Protocol (MCP) |
-
----
-
-## 📂 Project Structure
+The platform follows a stateful, multi-agent workflow that separates reasoning from computation.
 
 ```text
-autonomous-data-analyst-agent/
+                    User Question
+                          |
+                          v
+                 LangGraph Supervisor
+                          |
+                          v
+                   Analysis Planner
+                          |
+                          v
+                Specialized AI Workers
+                          |
+           +--------------+--------------+
+           |              |              |
+           v              v              v
+       SQL Agent      Python Agent   Visualization
+           |              |              |
+           v              v              |
+     SQL Validation   AST Validation     |
+           |              |              |
+           v              v              |
+      DuckDB /       Controlled Python  |
+     PostgreSQL        Execution         |
+           |              |              |
+           +--------------+--------------+
+                          |
+                          v
+                  Result Validation
+                          |
+                  +-------+-------+
+                  |               |
+                  v               v
+               Success       Retry / Recovery
+                  |               |
+                  v               +----> Planner
+             Insight Generation
+                  |
+                  v
+             Final AI Report
+                  |
+                  v
+          Interactive React UI
+```
+
+The precise workflow depends on the user's question and the tools selected for execution.
+
+## Analytical Workflow
+
+1. **Dataset ingestion:** Upload a CSV file and inspect its structure, columns, data types, and missing values.
+2. **Question understanding:** Interpret the user's natural-language request and identify the required analytical operations.
+3. **Planning:** Generate an execution plan using the LangGraph workflow.
+4. **Query generation:** Construct SQL or Python code when required.
+5. **Validation:** Check generated operations before execution.
+6. **Deterministic execution:** Execute approved operations against the dataset.
+7. **Result inspection:** Review outputs and recover from failures when possible.
+8. **Insight generation:** Generate a report grounded in computed results.
+9. **Visualization:** Present charts, metrics, and explanations through the frontend.
+10. **Follow-up analysis:** Use persisted conversational context to answer related questions.
+
+## Validation, Safety & Reliability
+
+The system combines LLM-based reasoning with deterministic execution and validation mechanisms.
+
+| Component | Purpose |
+|---|---|
+| SQL validation | Check generated queries and restrict unsafe operations |
+| Python AST checks | Detect disallowed syntax, imports, and operations |
+| Subprocess timeouts | Limit execution duration |
+| Reflection and retries | Attempt recovery from execution failures |
+| Session isolation | Separate dataset analysis sessions |
+| Grounded reporting | Generate explanations from actual execution results |
+| Workflow monitoring | Record execution metrics and failures |
+
+**Security note:** AST checks and subprocess execution are not equivalent to a hardened security sandbox. Production deployments should add operating-system or container isolation, resource limits, authentication, authorization, and strict database permissions.
+
+## Example Use Cases
+
+### Sales Analytics
+- Identify the top seven customers by total sales.
+- Analyze monthly sales trends.
+- Compare revenue across product categories.
+- Calculate the percentage contribution of each segment.
+
+### Statistical Analysis
+- Calculate correlations between numerical columns.
+- Detect potential outliers.
+- Summarize distributions and descriptive statistics.
+- Compare groups using appropriate statistical measures.
+
+### Business Intelligence
+- Generate executive summaries from analytical results.
+- Identify changes in important KPIs.
+- Explore follow-up questions without repeating the entire analysis.
+- Produce interactive visualizations to support decision-making.
+
+## Example Questions
+
+```text
+Show the top 7 customers by total sales.
+
+Show monthly sales trends.
+
+Calculate the correlation between sales and quantity.
+
+Detect outliers in sales.
+
+Show the percentage contribution by deal size.
+
+Compare revenue across product categories.
+```
+
+The available operations depend on the uploaded dataset and the implemented analytical tools.
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Frontend | React, TypeScript, Tailwind CSS, Vite |
+| Backend | Python, FastAPI |
+| Agent orchestration | LangGraph, LangChain |
+| LLM providers | Groq (Llama 3.3 70B), Gemini 2.5 Flash |
+| Relational database | PostgreSQL |
+| Analytical engine | DuckDB |
+| Data processing | Pandas, NumPy |
+| Visualization | Plotly |
+| Reporting | ReportLab |
+| Tool integration | Model Context Protocol (MCP) |
+| Deployment | Docker, Docker Compose |
+
+## Project Structure
+
+```text
+Autonomous-Multi-Agent-Data-Analyst/
 │
-├── backend/          # FastAPI + LangGraph workflow
-├── frontend/         # React application
-├── screenshots/      # README images
-├── docker-compose.yml
-├── requirements.txt
+├── backend/              # FastAPI and LangGraph workflows
+├── frontend/              # React and TypeScript application
+├── scratch/               # Supporting development files
+├── screenshots/           # Application screenshots
+├── uploads/               # Dataset upload directory
+├── .env.example           # Environment variable template
+├── .gitignore
+├── docker-compose.yml     # Service configuration
+├── requirements.txt       # Python dependencies
 └── README.md
 ```
 
----
+## Getting Started
 
-## 🚀 Getting Started
+### Prerequisites
 
-### 1. Clone the Repository
+Install the following tools:
+
+- Python 3.11 or a compatible version supported by the dependencies
+- Node.js and npm
+- Git
+- Docker Desktop with Docker Compose
+- API credentials for a supported LLM provider
+
+### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
-cd autonomous-data-analyst-agent
+git clone https://github.com/harini2005reddy/autonomous-multi-agent-data-analyst.git
+
+cd autonomous-multi-agent-data-analyst
 ```
 
-### 2. Start PostgreSQL
+### 2. Configure environment variables
 
-```bash
-docker-compose up -d
+Create a local environment file from the supplied template.
+
+**Windows PowerShell:**
+
+```powershell
+Copy-Item .env.example .env
 ```
 
-### 3. Backend Setup
+**Linux / macOS:**
 
 ```bash
-python -m venv .venv
-
-# Activate environment
-# Windows
-.venv\Scripts\activate
-
-# Linux / macOS
-source .venv/bin/activate
-
-pip install -r requirements.txt
-
 cp .env.example .env
 ```
 
-Configure your API keys inside `.env`.
+Add the required API keys and database configuration to `.env`. Never commit real secrets to GitHub.
 
-Start the backend:
+### 3. Start PostgreSQL
+
+```bash
+docker compose up -d
+```
+
+Check that the configured services are running before starting the backend.
+
+### 4. Set up the Python backend
+
+Create a virtual environment:
+
+```bash
+python -m venv .venv
+```
+
+Activate it on Windows:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+On Linux or macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start the API server:
 
 ```bash
 uvicorn backend.main:app --reload
 ```
 
-### 4. Frontend Setup
+Backend URL: `http://localhost:8000`
+
+### 5. Start the frontend
+
+Open another terminal:
 
 ```bash
 cd frontend
-
 npm install
-
 npm run dev
 ```
 
-Open:
+Frontend URL: `http://localhost:5173`
 
-- Frontend → `http://localhost:5173`
-- Backend → `http://localhost:8000`
+**Note:** These commands follow the supplied project documentation. Verify the environment variables, database configuration, available scripts, and backend entry point against the current code before running the application.
+
+## Observability & Explainability
+
+The platform is designed to make analytical execution easier to inspect.
+
+Depending on the workflow and implementation, users can review:
+
+- Generated SQL or Python operations.
+- Query and execution results.
+- Workflow stages and execution timing.
+- Validation failures and recovery attempts.
+- Charts, KPIs, and generated summaries.
+- Historical execution metrics.
+
+These details help developers debug analytical workflows and understand how reported insights were produced.
+
+##  Current Limitations
+
+- The documented ingestion workflow supports CSV datasets.
+- Generated Python runs in subprocess-based isolation rather than a hardened container sandbox.
+- MCP communication is documented as using local standard input/output transport.
+- Results depend on data quality, available tools, and LLM behavior.
+- Generated insights require validation before being used for consequential business decisions.
+- Production deployment requires additional security, monitoring, testing, and access-control measures.
+
+##  Potential Future Improvements
+
+- Add multilingual document retrieval and RAG-based research.
+- Introduce a dedicated reviewer agent for evidence verification.
+- Support additional data sources and file formats.
+- Add role-based access control and audit logging.
+- Improve automated evaluation of analytical correctness.
+- Add integration and regression tests for agent workflows.
+- Deploy the application with production-grade isolation and monitoring.
+
+These are proposed extensions, not claims that the features are already implemented.
+
+##  Engineering Concepts Demonstrated
+
+This project provides a practical foundation for exploring:
+
+- Multi-agent orchestration with LangGraph.
+- Natural-language-to-SQL workflows.
+- Deterministic data processing with DuckDB and Pandas.
+- Validation and recovery for LLM-generated operations.
+- Persistent conversational state.
+- Model Context Protocol tool integration.
+- Interactive data visualization.
+- API and frontend integration.
+- Execution monitoring and explainable analytics.
+
+
+## Author
+
+**Harini Ravula**
+
+GitHub: [@harini2005reddy](https://github.com/harini2005reddy)
+
+AI Engineering · Multi-Agent Systems · Machine Learning · Backend Development
 
 ---
 
-## 💬 Example Queries
-
-- "Show the top 7 customers by total sales."
-- "Show monthly sales trends."
-- "Calculate the correlation between sales and quantity."
-- "Detect outliers in sales."
-- "Show the percentage contribution by deal size."
-
----
-
-## 🔒 Limitations
-
-- Supports CSV datasets only.
-- Python code runs inside subprocess-based sandboxes rather than containers.
-- MCP communication currently uses local stdio transport.
-
----
-
-
-## ⭐ Key Takeaways
-
-This project demonstrates practical AI engineering concepts including:
-
-- Multi-agent orchestration with LangGraph
-- Stateful workflows and checkpointing
-- Safe SQL and Python execution
-- MCP-based tool integration
-- Reflection and retry mechanisms
-- Interactive analytics and reporting
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
-
-## 👨‍💻 Author
-
-**Chetan VK**
-
-B.Tech in Artificial Intelligence & Data Science
+*An evolving project focused on building reliable, explainable, and useful AI-powered data analytics workflows.*
